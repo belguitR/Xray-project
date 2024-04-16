@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Dental Xray AI Detector</h1>
+  <div class="upload-box">
+    <input type="file" id="file" (change)="onFileSelected($event)" hidden/>
+    <label for="file" class="upload-btn">Choose a file</label>
+    <button mat-raised-button (click)="upload()" class="analyze-btn">Analyze X-Ray</button>
+  </div>
+</div>
