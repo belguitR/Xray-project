@@ -3,23 +3,57 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	text-align: center; 
 	height: 100vh;
 	color: #fff;
-	background-color: #121212; 
+	background: url('/assets/background.png') no-repeat center center fixed;
+	background-size: cover;
 	font-family: 'Roboto', sans-serif;
+	position: relative; 
   }
   
+  .intro-paragraph {
+	color: white; 
+	background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+	padding: 1rem; /* Padding around the text */
+	border-radius: 8px; /* Rounded corners for the background */
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional: shadow for depth */
+	max-width: 300px; /* Adjust as necessary for the size of your text */
+	position: absolute; 
+	top: 40%; /* Adjust the top position to lower or raise the paragraph */
+	right: 75%; /* Adjust the right position to move left or right */
+	text-shadow: none; /* Remove text shadow since we now have a background */
+	font-size: 1rem; 
+	line-height: 1.6; /* Adjust line height for readability */
+	z-index: 10; /* Ensure it's above the background */
+  }
+  
+  
+  @media (max-width: 768px) {
+	.intro-paragraph {
+	  position: static; 
+	  margin-top: 2rem; 
+	  max-width: 80%; 
+	}
+  }
+  
+  
+  
+  
   h1 {
-	font-size: 2.5rem;
-	margin-bottom: 2rem;
-	text-align: center;
-	color: #0ab9e6; 
+	font-size: 3rem; 
+	color: white; 
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); 
+	margin-bottom: 1rem;
   }
   
   .upload-box {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background: rgba(0, 0, 0, 0.5); 
+	padding: 2rem;
+	border-radius: 10px;
   }
   
   .upload-btn,
@@ -27,12 +61,13 @@
 	background: #333;
 	color: #fff;
 	border: none;
-	padding: 1rem 2rem;
-	font-size: 1rem;
+	padding: 1rem 3rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	margin: 0.5rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	border-radius: 5px; 
   }
   
   .upload-btn:hover,
@@ -45,31 +80,15 @@
 	transform: scale(0.98); 
   }
   
- 
-  input[type="file"] {
-	display: none;
+  
+  label.upload-btn, button.analyze-btn {
+	font-size: 1.5rem;
+	padding: 20px 40px;
   }
   
   
-  .upload-btn {
-	position: relative;
-	overflow: hidden;
-	z-index: 1;
-  }
-  
-  .upload-btn::before {
-	content: '';
-	background: rgba(255, 255, 255, 0.1);
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: -1;
-	transition: opacity 0.3s;
-  }
-  
-  .upload-btn:hover::before {
-	opacity: 0;
+  h1 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
   }
   
