@@ -14,18 +14,18 @@
   
   .intro-paragraph {
 	color: white; 
-	background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
-	padding: 1rem; /* Padding around the text */
-	border-radius: 8px; /* Rounded corners for the background */
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional: shadow for depth */
-	max-width: 300px; /* Adjust as necessary for the size of your text */
+	background: rgba(0, 0, 0, 0.6); 
+	padding: 1rem; 
+	border-radius: 8px; 
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); 
+	max-width: 300px; 
 	position: absolute; 
-	top: 40%; /* Adjust the top position to lower or raise the paragraph */
-	right: 75%; /* Adjust the right position to move left or right */
-	text-shadow: none; /* Remove text shadow since we now have a background */
+	top: 40%; 
+	right: 75%; 
+	text-shadow: none; 
 	font-size: 1rem; 
-	line-height: 1.6; /* Adjust line height for readability */
-	z-index: 10; /* Ensure it's above the background */
+	line-height: 1.6; 
+	z-index: 10; 
   }
   
   
@@ -51,10 +51,20 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: rgba(0, 0, 0, 0.5); 
+	justify-content: center; /* Center its children vertically */
+	position: relative; 
+	background: rgba(0, 0, 0, 0.5);
 	padding: 2rem;
 	border-radius: 10px;
   }
+  
+  .mat-spinner {
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%, -50%); 
+  }
+  
   
   .upload-btn,
   .analyze-btn {
@@ -85,6 +95,7 @@
 	font-size: 1.5rem;
 	padding: 20px 40px;
   }
+
   
   
   h1 {

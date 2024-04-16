@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drag-drop',
@@ -8,26 +9,35 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DragDropComponent {
   selectedFile: File | null = null;
+  isLoading = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    console.log('File selected');
   }
 
   upload() {
+    console.log('Upload button clicked');
     if (this.selectedFile) {
+      this.isLoading = true;
       const formData = new FormData();
       formData.append('file', this.selectedFile, this.selectedFile.name);
-
-      this.http.post('your-backend-url/upload', formData).subscribe(
-        response => {
-          console.log('Upload success', response);
+      console.log('Before subscribe');
+      this.http.post('http://localhost:8080/detect', formData).subscribe(
+        (response: any) => {
+          this.isLoading = false;
+          this.router.navigate(['/result', { imageUrl: response.processedImageUrl }]);
         },
         error => {
+          this.isLoading = false;
           console.error('Upload error', error);
         }
+        
       );
+      console.log('After subscribe');
     }
   }
+  
 }

@@ -2,11 +2,14 @@
   <h1>Dental Xray AI Detector</h1>
   <p class="intro-paragraph">
     Elevate dental diagnostics with AI precision. Instantly detect and assess dental health from X-rays with our intelligent analysis.
-     Quick, accurate, and reliable—welcome to smarter dental care .
+     Quick, accurate, and reliable—welcome to smarter dental care.
   </p>
   <div class="upload-box">
     <input type="file" id="file" (change)="onFileSelected($event)" hidden/>
     <label for="file" class="upload-btn">Choose a file</label>
     <button mat-raised-button (click)="upload()" class="analyze-btn">Analyze X-Ray</button>
+    
+    <mat-spinner *ngIf="isLoading" style="display: block; margin: auto;"></mat-spinner>
+
   </div>
 </div>

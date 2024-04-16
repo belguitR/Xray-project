@@ -2,8 +2,10 @@ from ultralytics import YOLO
 from flask import request, Flask, jsonify
 from waitress import serve
 from PIL import Image
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def root():
@@ -25,6 +27,7 @@ def detect():
         :return: a JSON array of objects bounding boxes in format [[x1,y1,x2,y2,object_type,probability],..]
     """
     buf = request.files["image_file"]
+    print("Received image:", buf.filename)  # Print the filename of the received image
     boxes = detect_objects_on_image(buf.stream)
     return jsonify(boxes)
 
@@ -52,7 +55,6 @@ def detect_objects_on_image(buf):
         output.append([
             x1, y1, x2, y2, result.names[class_id], prob_percentage
         ])
-
 
     return output
 

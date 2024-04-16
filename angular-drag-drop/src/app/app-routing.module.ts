@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DragDropComponent } from './drag-drop/drag-drop.component';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
-  { path: 'drag-drop', component: DragDropComponent },
   
+  { path: 'result', component: ResultComponent },
 ];
 
 @NgModule({
