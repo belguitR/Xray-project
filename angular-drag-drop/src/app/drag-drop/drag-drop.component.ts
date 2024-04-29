@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drag-drop',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 export class DragDropComponent {
   selectedFile: File | null = null;
   isLoading = false;
+  processedImageUrl: string | null = null;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -25,19 +28,24 @@ export class DragDropComponent {
       const formData = new FormData();
       formData.append('file', this.selectedFile, this.selectedFile.name);
       console.log('Before subscribe');
-      this.http.post('http://localhost:8080/detect', formData).subscribe(
-        (response: any) => {
+      this.http.post('http://localhost:8080/detect', formData, { responseType: 'blob' }).pipe(
+        tap((response: Blob) => {
           this.isLoading = false;
-          this.router.navigate(['/result', { imageUrl: response.processedImageUrl }]);
+          const imageUrl = URL.createObjectURL(response);
+          this.processedImageUrl = imageUrl;
+          // Open the processed image in a new tab
+          window.open(imageUrl, '_blank');
+        })
+      ).subscribe(
+        () => {
+          console.log('Request completed');
         },
-        error => {
+        (error) => {
           this.isLoading = false;
           console.error('Upload error', error);
         }
-        
       );
       console.log('After subscribe');
     }
   }
-  
 }
