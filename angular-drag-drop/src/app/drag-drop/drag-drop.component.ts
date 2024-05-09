@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -12,9 +10,8 @@ import { tap } from 'rxjs/operators';
 export class DragDropComponent {
   selectedFile: File | null = null;
   isLoading = false;
-  processedImageUrl: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -32,9 +29,37 @@ export class DragDropComponent {
         tap((response: Blob) => {
           this.isLoading = false;
           const imageUrl = URL.createObjectURL(response);
-          this.processedImageUrl = imageUrl;
           // Open the processed image in a new tab
-          window.open(imageUrl, '_blank');
+          const newTab = window.open('', '_blank');
+          if (newTab) {
+            newTab.document.write(`
+            <html>
+            <head>
+              <title>Processed Image</title>
+              <style>
+                /* CSS styles */
+                body {
+                  background-color: #545353;
+                }
+                button {
+                  padding: 10px 20px;
+                  border-radius: 5px; /* Adding border radius to the button */
+                }
+              </style>
+            </head>
+            <body style="text-align: center;">
+              <img src="${imageUrl}" style="max-width: 80%; max-height: 80%; display: block; margin: auto;">
+              <div style="margin-top: 20px;">
+                <a href="${imageUrl}" download="processed_image.png">
+                  <button style="padding: 10px 20px;">Download Image</button>
+                </a>
+              </div>
+            </body>
+          </html>
+            `);
+          } else {
+            console.error('Failed to open new tab');
+          }
         })
       ).subscribe(
         () => {
@@ -48,4 +73,5 @@ export class DragDropComponent {
       console.log('After subscribe');
     }
   }
+  
 }

@@ -57,9 +57,9 @@ def detect_objects_on_image(buf):
         class_id = box.cls[0].item()
         prob = round(box.conf[0].item(), 2)
         label = result.names[class_id]
-        # Draw bounding box on the image
+        
         cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        # Put label and probability on the image
+        
         cv2.putText(img_cv2, f'{label}: {prob}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
     
     # Convert the annotated image back to bytes

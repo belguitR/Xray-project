@@ -8,16 +8,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module'; // Make sure this is the correct path
 import { AppComponent } from './app.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
-import { ResultComponent } from './result/result.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DragDropComponent,
-    ResultComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     BrowserAnimationsModule,
     DragDropModule,
     MatButtonModule,
