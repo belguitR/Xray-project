@@ -1,0 +1,8 @@
+path: C:/Users/21650/Desktop/YOLO/dentex.v4i.yolov8
+train: train/images
+val: train/images
+
+nc: 4
+names: 
+  ['Caries', 'Deep Caries', 'Impacted', 'Periapical Lesion']
+  
