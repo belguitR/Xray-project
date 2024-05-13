@@ -48,7 +48,7 @@ export class DragDropComponent {
               </style>
             </head>
             <body style="text-align: center;">
-              <img src="${imageUrl}" style="max-width: 80%; max-height: 80%; display: block; margin: auto;">
+              <img src="${imageUrl}" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
               <div style="margin-top: 20px;">
                 <a href="${imageUrl}" download="processed_image.png">
                   <button style="padding: 10px 20px;">Download Image</button>

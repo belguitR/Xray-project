@@ -41,7 +41,7 @@ def detect_objects_on_image(buf):
     :param buf: Input image file stream
     :return: Image with bounding boxes drawn around detected objects
     """
-    model = YOLO("amir.pt")
+    model = YOLO(r'C:\Users\21650\Desktop\PFE FRR\Xray-project\YOLO_Model\YOLO\runs\detect\train\weights\best.pt')
     # Convert the image stream to a numpy array
     img_np = np.frombuffer(buf.read(), np.uint8)
     # Decode the numpy array to an OpenCV image
@@ -58,9 +58,9 @@ def detect_objects_on_image(buf):
         prob = round(box.conf[0].item(), 2)
         label = result.names[class_id]
         
-        cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (255,0,0), 2)
         
-        cv2.putText(img_cv2, f'{label}: {prob}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        cv2.putText(img_cv2, f'{label}: {prob}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,0,0), 2)
     
     # Convert the annotated image back to bytes
     _, img_encoded = cv2.imencode('.jpg', img_cv2)
