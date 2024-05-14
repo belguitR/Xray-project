@@ -4,16 +4,18 @@ Welcome to our AI Dental X-ray Detector app! This repository contains the code f
 How to Run
 To run the app, follow these simple steps:
 
-Navigate to the dentalXrayAi directory and run the Flask app:
-
+Navigate to the DentalXrayAi directory and run the Flask app:
 
 cd dentalXrayAi
+
 python app.py
+
 Then, navigate to the angular-drag-drop directory and run the Angular interface:
 
-
 cd angular-drag-drop
+
 ng serve
+
 Once both the Flask app and Angular interface are running, you can access the application on localhost:4200.
 
 Overview
@@ -25,10 +27,11 @@ The image is sent to the Flask backend via API request.
 Flask processes the image using the YOLOv8 model.
 Detected diseases and abnormalities are annotated on the image.
 Processed image with annotations is sent back to the Angular frontend.
-The Angular frontend displays the annotated image to the user.
+The Angular frontend displays the annotated image to the user and grants a download feature.
 Dataset and Training
 We trained the YOLOv8 model on various datasets containing labeled X-ray images for training and validation. The classic process of data preparation, model training, and validation was followed to achieve accurate detection results.
 
-Feel free to explore the code and contribute to the project! If you have any questions or suggestions, please don't hesitate to reach out.
+Feel free to explore the code and contribute to the project! If you have any questions or suggestions, please don’t hesitate to reach out.
 
-Happy X-ray detecting! 🦷🔍
+We hope you find it useful! 🦷🔍
+
