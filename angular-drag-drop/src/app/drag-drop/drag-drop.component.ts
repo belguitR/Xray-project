@@ -43,12 +43,15 @@ export class DragDropComponent {
                 }
                 button {
                   padding: 10px 20px;
-                  border-radius: 5px; /* Adding border radius to the button */
+                  border-radius: 5px; 
+                }
+                button:hover {
+                  background: #0ab9e6; 
                 }
               </style>
             </head>
             <body style="text-align: center;">
-              <img src="${imageUrl}" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+              <img src="${imageUrl}" style="max-width: 80%; max-height: 80%; display: block; margin: auto;">
               <div style="margin-top: 20px;">
                 <a href="${imageUrl}" download="processed_image.png">
                   <button style="padding: 10px 20px;">Download Image</button>
@@ -73,5 +76,8 @@ export class DragDropComponent {
       console.log('After subscribe');
     }
   }
-  
+
+  openSourceGuide() {
+    window.open('https://github.com/l3miage-belguitr/Xray-project', '_blank');
+  }
 }

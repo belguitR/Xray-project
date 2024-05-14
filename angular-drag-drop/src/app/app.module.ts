@@ -11,10 +11,12 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { RouterModule } from '@angular/router';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DragDropComponent,
+  
   ],
   imports: [
     BrowserModule,
