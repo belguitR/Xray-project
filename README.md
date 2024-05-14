@@ -2,6 +2,34 @@
 
 Welcome to our AI Dental X-ray Detector app! This repository contains the code for an application that detects various dental diseases, cavities, and carries in X-ray images using YOLOv8 model trained on diverse datasets. The app utilizes Flask for the backend and Angular for the frontend.
 
+# Prerequisites
+
+ For Python:
+ 
+     Flask
+     
+     Flask-CORS
+     
+     Waitress
+     
+     OpenCV (cv2)
+     
+     numpy
+     
+     Ultralytics YOLO
+     
+     Python Imaging Library (PIL)
+     
+For Angular:
+
+Angular CLI
+
+HttpClientModule
+
+rxjs
+
+
+
 ## How to Run
 
 To run the app, follow these simple steps:
@@ -36,6 +64,16 @@ Once both the Flask app and Angular interface are running, you can access the ap
 ## Dataset and Training
 
 We trained the YOLOv8 model on various datasets containing labeled X-ray images for training and validation. The classic process of data preparation, model training, and validation was followed to achieve accurate detection results.
+
+
+## Screenshots
+
+
+![image](https://github.com/l3miage-belguitr/Xray-project/assets/116873286/b2422098-15cb-42fd-80cb-29f636d9d419)
+
+![image](https://github.com/l3miage-belguitr/Xray-project/assets/116873286/24cc9daa-45ad-4273-9e5f-44ab81169b3f)
+
+
 
 
 Feel free to explore the code and contribute to the project! If you have any questions or suggestions, please don't hesitate to reach out.
