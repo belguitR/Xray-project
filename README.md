@@ -22,11 +22,11 @@ Welcome to our AI Dental X-ray Detector app! This repository contains the code f
      
 For Angular:
 
-Angular CLI
-
-HttpClientModule
-
-rxjs
+     Angular CLI
+     
+     HttpClientModule
+     
+     rxjs
 
 
 
