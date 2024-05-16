@@ -50,17 +50,20 @@ def detect_objects_on_image(buf):
     # Perform object detection
     results = model.predict(img_cv2)
     result = results[0]
-
+    
     # Draw bounding boxes and labels on the image
+    Threshold= 50
     for box in result.boxes:
         x1, y1, x2, y2 = [round(x) for x in box.xyxy[0].tolist()]
         class_id = box.cls[0].item()
-        prob = round(box.conf[0].item(), 2)
+        prob = round(box.conf[0].item() * 100, 2)  # Convert probability to percentage
         label = result.names[class_id]
-        
-        cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (0,255,255), 2)
-        
-        cv2.putText(img_cv2, f'{label}: {prob}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,255), 2)
+    
+        # Only display predictions with probability greater than or equal to 50%
+        if prob >= Threshold:
+            cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (0, 255, 255), 2)
+            cv2.putText(img_cv2, f'{label}: {prob}%', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+
     
     
     # Convert the annotated image back to bytes

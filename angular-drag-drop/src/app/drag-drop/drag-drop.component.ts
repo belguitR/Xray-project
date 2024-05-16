@@ -78,6 +78,6 @@ export class DragDropComponent {
   }
 
   openSourceGuide() {
-    window.open('https://github.com/l3miage-belguitr/Xray-project', '_blank');
+    window.open('https://github.com/AmirNasfy/X-Ray-PFE/tree/main/Xray-project-main', '_blank');
   }
 }
