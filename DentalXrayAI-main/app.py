@@ -48,7 +48,7 @@ def detect_objects_on_image(buf):
     :param buf: Input image file stream
     :return: Image with bounding boxes drawn around detected objects
     """
-    model = YOLO("amir.pt")
+    model = YOLO("Yolov8.pt")
     # Convert the image stream to a numpy array
     img_np = np.frombuffer(buf.read(), np.uint8)
     # Decode the numpy array to an OpenCV image
