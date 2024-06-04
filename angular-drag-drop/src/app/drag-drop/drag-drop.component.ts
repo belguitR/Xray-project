@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-drag-drop',
   templateUrl: './drag-drop.component.html',
   styleUrls: ['./drag-drop.component.css']
 })
-export class DragDropComponent {
+export class DragDropComponent implements OnInit {
   selectedFile: File | null = null;
   isLoading = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private titleService: Title) { }
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Dental X-Ray AI Detector');
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];

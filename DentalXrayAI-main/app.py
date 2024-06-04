@@ -4,11 +4,18 @@ from waitress import serve
 from flask_cors import CORS  # Import CORS from flask_cors
 import cv2
 import io
-import cv2
 import numpy as np
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+# Define a fixed set of colors for each class
+colors = [
+    (255, 0, 0),      # Red for class 0
+    (0, 255, 0),      # Green for class 1
+    (0, 0, 255),      # Blue for class 2
+    (255, 0, 255)     # Magenta for class 3
+]
 
 @app.route("/")
 def root():
@@ -52,19 +59,18 @@ def detect_objects_on_image(buf):
     result = results[0]
     
     # Draw bounding boxes and labels on the image
-    Threshold= 50
+    Threshold = 50
     for box in result.boxes:
         x1, y1, x2, y2 = [round(x) for x in box.xyxy[0].tolist()]
-        class_id = box.cls[0].item()
+        class_id = int(box.cls[0].item())  # Convert class_id to integer
         prob = round(box.conf[0].item() * 100, 2)  # Convert probability to percentage
         label = result.names[class_id]
     
         # Only display predictions with probability greater than or equal to 50%
         if prob >= Threshold:
-            cv2.rectangle(img_cv2, (x1, y1), (x2, y2), (0, 255, 255), 2)
-            cv2.putText(img_cv2, f'{label}: {prob}%', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
-
-    
+            color = colors[class_id % len(colors)]  # Use the color corresponding to the class ID
+            cv2.rectangle(img_cv2, (x1, y1), (x2, y2), color, 2)
+            cv2.putText(img_cv2, f'{label}: {prob}%', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
     
     # Convert the annotated image back to bytes
     _, img_encoded = cv2.imencode('.jpg', img_cv2)
